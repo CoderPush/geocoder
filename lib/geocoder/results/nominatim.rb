@@ -2,6 +2,9 @@ require 'geocoder/results/base'
 
 module Geocoder::Result
   class Nominatim < Base
+    def phone
+      @data.dig('extratags', 'phone')
+    end
 
     def poi
       return @data['address'][place_type] if @data['address'].key?(place_type)
